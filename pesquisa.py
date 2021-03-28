@@ -62,23 +62,24 @@ class VetorNaoOrdenado:  # classe para trabalhar com vetores estáticos (sem as 
                     return meio + i
 
     def BuscaBinaria_Recursiva(self, valor, inicio, fim):
-        meio = int((fim - inicio) / 2)
+        meio = int(fim / 2) + inicio
         print(f'meiorec == {meio}')
         if valor == self.valores[meio]:
             return meio
         if valor < self.valores[meio]:
-            self.BuscaBinaria_Recursiva(self, valor, 0, meio)
+            self.BuscaBinaria_Recursiva(valor, 0, meio)
         if valor > self.valores[meio]:
-            self.BuscaBinaria_Recursiva(self, valor, meio, len(self.valores))
+            self.BuscaBinaria_Recursiva(valor, meio, len(self.valores))
 
     def Hashing(self, valor):
-        pass
+        return (valor % 31) + 1
 
 
 
 x = VetorNaoOrdenado(11)
 #for i in range(9000000):
-    #x.inserir(random.randrange(0, 555))  # inserindo valores aleatórios
+    #x.inserir(random.randrange(0, 555))  #inserindo valores aleatórios
+
 x.inserir(3)
 x.inserir(4)
 x.inserir(11)
@@ -91,9 +92,10 @@ x.inserir(78)
 x.inserir(89)
 x.inserir(112)
 
-
-#posrec = x.BuscaBinaria_Recursiva(4, 0, len(x.valores))
-#print(f'posrec == {posrec}')
+#poshas = x.Hashing(112)
+#print(f'poshas == {poshas}')
+posrec = x.BuscaBinaria_Recursiva(78, 0, len(x.valores))
+print(f'posrec == {posrec}')
 #pos = x.BuscaBinaria_VetorOrdenado(4)
 #print(f'pos == {pos}')
 
