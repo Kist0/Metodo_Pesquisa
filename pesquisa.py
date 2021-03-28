@@ -1,6 +1,6 @@
-import numpy as np
-import random
 import time
+import random
+import numpy as np
 
 
 class VetorNaoOrdenado:  # classe para trabalhar com vetores estáticos (sem as listas do Python)
@@ -48,20 +48,26 @@ class VetorNaoOrdenado:  # classe para trabalhar com vetores estáticos (sem as 
         return -1  # se chegou até aqui não encontrou
 
     def BuscaBinaria_VetorOrdenado(self, valor):
-        meio = (len(self.valores) / 2)
-        print(meio)
+        meio = int((len(self.valores) / 2))
+        print(f'meio == {meio}')
         if valor == self.valores[meio]:
             return meio
-        if valor < self.valores[meio+1]:
-
-        if valor > self.valores[meio+1]:
+        if valor < self.valores[meio]:
             for i in range(meio):
-                if valor != self.valores[meio + i]:
-                    i += 1
+                if valor == self.valores[meio - i]:
+                    return meio - i
+        if valor > self.valores[meio]:
+            for i in range(meio+1):
+                if valor == self.valores[meio + i]:
+                    return meio + i
+
+    def BuscaBinaria_Recursiva(self, valor, inicio, fim):
+        pass
 
 
 
-x = VetorNaoOrdenado(9)
+
+x = VetorNaoOrdenado(11)
 #for i in range(9000000):
     #x.inserir(random.randrange(0, 555))  # inserindo valores aleatórios
 x.inserir(3)
@@ -74,18 +80,21 @@ x.inserir(65)
 x.inserir(77)
 x.inserir(78)
 x.inserir(89)
-x.BuscaBinaria_VetorOrdenado(78)
+x.inserir(112)
+pos = x.BuscaBinaria_VetorOrdenado(4)
+print(f'pos == {pos}')
+
 #x.inserir(556)
 # x.ordena_bolha()
 # x.imprimir()
 
-antes = time.time()  # timestamp de antes de chamar a busca
-pos = x.Busca_VetorNaoOrdenado(556)
+#antes = time.time()  # timestamp de antes de chamar a busca
+#pos = x.Busca_VetorNaoOrdenado(556)
 
-segundos = time.time() - antes
-print(f'Levou {segundos} segundos')
+#segundos = time.time() - antes
+#print(f'Levou {segundos} segundos')
 
-if pos >= 0:
-    print(f'Valor encontrado na posição {pos}')
-else:
-    print('Valor não encontrado')
+#if pos >= 0:
+#    print(f'Valor encontrado na posição {pos}')
+#else:
+#    print('Valor não encontrado')
