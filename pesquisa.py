@@ -16,6 +16,10 @@ class VetorNaoOrdenado:  # classe para trabalhar com vetores estáticos (sem as 
         self.ultimaPosicao = self.ultimaPosicao + 1
         self.valores[self.ultimaPosicao] = valor
 
+    def inserir_hashing(self, valor):  # insere um elemento na posiçao do hashing
+        self.ultimaPosicao = self.ultimaPosicao + 1
+        self.valores[self.Hashing(valor)] = valor
+
     def imprimir(self):  # imprime todo o vetor
         for i in range(self.ultimaPosicao + 1):
             print('posição ', i, ' valor ', self.valores[i])
@@ -82,12 +86,15 @@ class VetorNaoOrdenado:  # classe para trabalhar com vetores estáticos (sem as 
 
 
 x = VetorNaoOrdenado(50)
-for i in range(49):
-  x.inserir(random.randrange(0, 2000)) #inserindo valores aleatórios
+#for i in range(49):
+#  x.inserir(random.randrange(0, 2000)) #inserindo valores aleatórios
+x.inserir_hashing(40)
+x.inserir_hashing(70)
 
-x.inserir(575)
+#x.inserir(575)
 x.ordena_bolha()
-x.imprimir()
-# posicao = x.BuscaBinaria_Recursiva(575, 0, 50)
-posicao = x.BuscaBinaria_VetorOrdenado(575)
+#x.imprimir()
+#posicao = x.BuscaBinaria_Recursiva(575, 0, 50)
+#posicao = x.BuscaBinaria_VetorOrdenado(575)
+posicao = x.Hashing(40)
 print(f'Valor encontrado na posição {posicao}')
